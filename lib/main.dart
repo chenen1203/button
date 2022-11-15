@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -28,56 +29,88 @@ class MyStatelessWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          TextButton(
+          ElevatedButton(
             style: TextButton.styleFrom(
               textStyle: const TextStyle(fontSize: 20),
-            ),
-            onPressed: null,
-            child: const Text('Disabled'),
-          ),
-          const SizedBox(height: 30),
-          TextButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 20),
+              backgroundColor: Color(0xFFFFEB3B),
+              foregroundColor: Colors.red,
             ),
             onPressed: () {},
-            child: const Text('Enabled'),
+            child: const Text('RaisedButton'),
           ),
-          const SizedBox(height: 30),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Stack(
-              children: <Widget>[
-                Positioned.fill(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: <Color>[
-                          Color(0xFF0D47A1),
-                          Color(0xFF1976D2),
-                          Color(0xFF42A5F5),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.all(16.0),
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: const Text('Gradient'),
-                ),
-              ],
+
+          const SizedBox(height: 10),
+
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: const TextStyle(fontSize: 20),
+              backgroundColor: Color(0xFF1976D2),
+              foregroundColor: Colors.white,
             ),
+            onPressed: () {},
+            child: const Text('FlatButton'),
           ),
+
+          const SizedBox(height: 10),
+
+          OutlinedButton(
+            style: TextButton.styleFrom(
+              textStyle: const TextStyle(fontSize: 20),
+              backgroundColor: Color(0xB3FFFFFF),
+              foregroundColor: Colors.black,
+              side: (BorderSide(width: 1, color: Color(0xFFF44336))),
+            ),
+            onPressed: () {},
+            child: const Text('OutlineButton'),
+          ),
+
+          const SizedBox(height: 10),
+
+          IconButton(
+            color: Colors.blue,
+            icon: Icon(Icons.phone_android),
+            onPressed: () {},
+          ),
+
+          const SizedBox(height: 10),
+
+          FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: Colors.blue,
+            child: const Icon(Icons.phone_android),
+
+          ),
+
+          const SizedBox(height: 10),
+
+          ElevatedButton.icon(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                textStyle: const TextStyle(fontSize: 20),
+                backgroundColor: Color(0xFF9E9E9E),
+                foregroundColor: Colors.red,
+              ),
+              icon: Icon(Icons.phone_android),
+              label: Text('RaisedButton.icon')),
+
         ],
       ),
     );
   }
 }
+
+
+void showtoast(BuildContext context) {
+  final scaffold = ScaffoldMessenger.of(context);
+  scaffold.showSnackBar(
+    SnackBar(
+      content: const Text('Added to favorite'),
+      action: SnackBarAction(label: 'UNDO', onPressed: scaffold.hideCurrentSnackBar),
+    ),
+  );
+}
+
+
 
 
 
